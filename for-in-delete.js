@@ -23,9 +23,9 @@
 //   console.log(values[key])
 // }
 
-/*
-  In this next example, we are accessing the property names themselves. Uncomment the code below, run it and look at what prints in the console.
-*/
+// /*
+//   In this next example, we are accessing the property names themselves. Uncomment the code below, run it and look at what prints in the console.
+// */
 
 // for(var key in values) {
 //   console.log(key)
@@ -41,6 +41,11 @@
 
 function showValues( obj ) {
   //Code Here
+  var str = "";
+  for( var k in obj){
+    str+=obj[k];
+  }
+  return str;
 }
 
 
@@ -54,6 +59,14 @@ function showValues( obj ) {
 */
 
 //Code Here
+function greaterThan10(obj){
+  for(var k in obj){
+    if(obj[k]>10){
+      obj[k]=0;
+    }
+  }
+  return obj;
+}
 
 
 
@@ -66,7 +79,12 @@ function showValues( obj ) {
 */
 
 //Code Here
-
+function double(obj){
+  for(var k in obj){
+    obj[k]*=2;
+  }
+  return obj;
+}
 
 
 ////////// PROBLEM 4 //////////
@@ -80,7 +98,15 @@ function showValues( obj ) {
 */
 
 //Code Here
-
+function secrets(obj){
+  var str= [];
+  for(var k in obj){
+    if(k[0]=="s" && k[1]=="h"){
+      str+=obj[k];
+    }
+  }
+  return str;
+}
 
 
 /* 
@@ -111,7 +137,14 @@ function showValues( obj ) {
 */
 
 //Code Here
-
+function removePassword(obj){
+  for (var k in obj){
+    if(k=="password"){
+      delete obj[k];
+    }
+  }
+  return obj;
+}
 
 
 ////////// PROBLEM 6 //////////
@@ -130,6 +163,11 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
+for (var k in deleteTheBigNumbers){
+  if(deleteTheBigNumbers[k]>100){
+    delete deleteTheBigNumbers[k];
+  }
+}
 
 
 
@@ -143,6 +181,12 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
+function startsWithK(obj){
+  for(var k in obj){
+    if(k[0]=="k"){delete obj[k];}
+  }
+  return obj;
+}
 
 
 
@@ -158,5 +202,12 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
-
+function hiddenTreasure(obj){
+  for(var k in obj){
+    if(obj[k].includes("treasure")==false){
+      delete obj[k];
+    }
+  }
+  return obj;
+}
 
