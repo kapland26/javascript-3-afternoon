@@ -30,6 +30,17 @@
 */
 
 //Code Here
+class Employee{
+  constructor(first, last, email, age){
+    this.first_name = first;
+    this.last_name = last;
+    this.email = email;
+    this.age = age;
+  }
+  makeWidget(){
+    return this.first_name+" "+this.last_name+" Widget"
+  }
+}
 
 
 
@@ -50,8 +61,24 @@
 */
 
 //Code Here
-
-
+class Manager{
+  constructor(first, last, email, age){
+    this.first_name = first;
+    this.last_name = last;
+    this.email = email;
+    this.age = age;
+    this.reports = [];
+  }
+  makeWidget(){
+    return this.first_name+" "+this.last_name+" Widget"
+  }
+  hire(employee){
+    this.reports.push(employee);
+  }
+  fire(i){
+    this.reports.splice(i, 1);
+  }
+}
 
 ////////// PROBLEM 3 //////////
 
@@ -76,6 +103,59 @@
 */
 
 //Code Here
+class ProgressiveManager{
+  constructor(first, last, email, age){
+    this.first_name = first;
+    this.last_name = last;
+    this.email = email;
+    this.age = age;
+    this.reports = [];
+    this.title = "Not a manager";
+    this.bonus = 0;
+  }
+  makeWidget(){
+    return this.first_name+" "+this.last_name+" Widget"
+  }
+  updateTitle(){
+    var x = this.reports.length;
+    switch(true){
+      case (x===0):
+        this.title = "Not a manager";
+        break;
+      case (x<4):
+        this.title = "Barely Manager";
+        break;
+      case(x<11):
+        this.title = "Mostly Manager";
+        break;
+      case(x<51):
+        this.title = "Manager";
+        break;
+      case(x<101):
+        this.title = "Manager Plus";
+        break;
+      case(x>=101):
+        this.title = "Bestest Manager";
+        break;
+    }
+    /*if(x===0) {this.title = "Not a manager";}
+    else if(x<4) {this.title = "Barely Manager";}
+    else if(x<11) {this.title = "Mostly Manager";}
+    else if(x<51) {this.title = "Manager";}
+    else if(x<101) {this.title = "Manager Plus";}
+    else {this.title = "Bestest Manager";}
+    */
+  }
+  hire(employee){
+    this.reports.push(employee);
+    this.updateTitle();
+  }
+  fire(i){
+    this.reports.splice(i, 1);
+    this.updateTitle();
+    this.bonus+=100;
+  }
+}
 
 
 
@@ -103,5 +183,30 @@
 */
 
 //Code Here
-
+class Machine{
+  constructor(){
+    this.widgets_made_count = 0;
+    this.wear_and_tear_count = 0;
+    this.needs_roboot = false;
+  }
+  wearAndTearInc(count, opp){
+    if(opp = "add"){
+      this.widgets_made_count+=count;
+      if (this.widgets_made_count%50===0){
+        this.wear_and_tear_count++;
+      }
+    }
+  }
+  makeWidgets(x){
+    this.wearAndTearInc(x, "add");
+  }
+  fixMachine(){
+    this.needs_roboot = true;
+  }
+  reboot(){
+    this.wear_and_tear_count-=10;
+    this.needs_roboot = false;
+    return console.log("????");
+  }
+}
 
